@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/ui/Navbar/Navbar';
+import TrendingPage from './components/TrendingPage/TrendingPage';
+import SearchedContent from './components/SearchedContent/SearchedContent';
+import Error from './components/ui/Error/Error';
+import { useGlobalContext } from './context';
+
+import { Switch, Route } from 'react-router-dom';
+import SingleContent from './components/SingleContent/SingleContent';
+import classes from './App.module.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const { searching } = useGlobalContext();
+
+	return (
+		<div className="App">
+			<Navbar />
+			<Switch>
+				<Route path="/movie/:id">
+					<div>{searching ? <SearchedContent /> : <SingleContent />}</div>
+				</Route>
+				<Route path="/tv/:id">
+					<div>{searching ? <SearchedContent /> : <SingleContent />}</div>
+				</Route>
+				<Route path="/">
+					<div className={classes.LandingPage}>{searching ? <SearchedContent /> : <TrendingPage />}</div>
+				</Route>
+				<Route path="*">
+					<Error />
+				</Route>
+			</Switch>
+		</div>
+	);
 }
 
 export default App;
