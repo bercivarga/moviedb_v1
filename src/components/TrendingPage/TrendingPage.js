@@ -6,7 +6,7 @@ import classes from './TrendingPage.module.css';
 
 export default function TrendingPage() {
 	return (
-		<div>
+		<div className={classes.TrendingPage}>
 			<TrendingMovies />
 			<TrendingTv />
 		</div>
