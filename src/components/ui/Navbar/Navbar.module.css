@@ -1,10 +1,26 @@
 .Navbar {
+	position: absolute;
+	width: 100%;
+	text-decoration: none;
+	z-index: 10;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.NavbarFixed {
+	position: relative;
+	width: 100%;
+	text-decoration: none;
+	z-index: 10;
+	background: rgb(0, 0, 0);
+}
+
+.NavContent {
+	margin: 0 auto;
+	width: 90%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 90%;
-	margin: 0 auto;
-	text-decoration: none;
 }
 
 .LeftSideNav {
@@ -15,6 +31,7 @@
 .Logo {
 	text-decoration: none;
 	margin-right: 20px;
+	color: whitesmoke;
 }
 
 .Links span:first-child {
@@ -23,4 +40,5 @@
 
 .Link {
 	text-decoration: none;
+	color: whitesmoke;
 }

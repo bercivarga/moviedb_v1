@@ -2,18 +2,33 @@ import React from 'react';
 import { useGlobalContext } from '../../../context';
 import { Link } from 'react-router-dom';
 
+import classes from './TrendingTv.module.css';
+
 export default function TrendingTv() {
 	const { trendingTv } = useGlobalContext();
 
 	return (
-		<div>
-			{trendingTv.map((t) => {
-				return (
-					<Link to={`/tv/${t.id}`} key={t.id}>
-						<h2>{t.name}</h2>
-					</Link>
-				);
-			})}
-		</div>
+		<React.Fragment>
+			<h1 style={{ color: 'whitesmoke' }}>Series trending right now</h1>
+			<di className={classes.TrendingTv}>
+				{trendingTv.map((t) => {
+					return (
+						<Link
+							to={`/tv/${t.id}`}
+							key={t.id}
+							className={classes.TvCard}
+							style={{
+								backgroundImage: `url(https://image.tmdb.org/t/p/original/${t.backdrop_path})`,
+								textDecoration: 'none',
+								color: 'whitesmoke'
+							}}
+						>
+							<h2 className={classes.TvCardText}>{t.name}</h2>
+							<div className={classes.Overlay} />
+						</Link>
+					);
+				})}
+			</di>
+		</React.Fragment>
 	);
 }

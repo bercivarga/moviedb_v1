@@ -3,7 +3,7 @@ import classes from './Searchbar.module.css';
 import { useGlobalContext } from '../../context';
 
 export default function Searchbar() {
-	const { searchTerm, setSearchTerm, setSearching } = useGlobalContext();
+	const { searchTerm, setSearchTerm, setSearching, setOnDetailsPage } = useGlobalContext();
 
 	const input = useRef('');
 
@@ -20,6 +20,8 @@ export default function Searchbar() {
 		() => {
 			if (input.current.value === '') {
 				setSearching(false);
+				// navbar fix
+				setOnDetailsPage(false);
 			}
 		},
 		[ searchTerm ]

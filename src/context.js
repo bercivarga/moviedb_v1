@@ -12,6 +12,8 @@ export default function AppProvider({ children }) {
 	const [ searchedContent, setSearchedContent ] = useState([]);
 	const [ searching, setSearching ] = useState(false);
 	const [ noResults, setNoResults ] = useState(false);
+	// navbar fix
+	const [ onDetailsPage, setOnDetailsPage ] = useState(false);
 
 	useEffect(
 		() => {
@@ -99,7 +101,9 @@ export default function AppProvider({ children }) {
 				searchedContent,
 				searching,
 				setSearching,
-				noResults
+				noResults,
+				onDetailsPage,
+				setOnDetailsPage
 			}}
 		>
 			{children}

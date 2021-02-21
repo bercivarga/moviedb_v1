@@ -1,5 +1,36 @@
-.TrendingPage {
-	padding-top: 60px;
+.Highlight {
+	margin-bottom: 60px;
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 70vh;
+	background-size: cover;
+}
+
+.HighlightText {
+	color: #f2f2f2;
+	align-self: flex-end;
 	width: 90%;
 	margin: 0 auto;
+	padding-bottom: 20px;
+	z-index: 2;
+}
+
+.HighlightText p {
+	width: 50%;
+}
+
+.TrendingContent {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.Overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 50%);
 }
