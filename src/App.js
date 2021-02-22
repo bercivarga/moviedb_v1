@@ -10,6 +10,7 @@ import classes from './App.module.css';
 
 function App() {
 	const { searching } = useGlobalContext();
+	// test
 
 	return (
 		<div className="App">
