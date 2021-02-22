@@ -9,7 +9,9 @@ export default function TrendingMovies() {
 
 	return (
 		<React.Fragment>
-			<h1 style={{ color: 'whitesmoke' }}>Moves trending right now</h1>
+			<h1 style={{ color: 'whitesmoke' }}>
+				<span style={{ color: 'red' }}>Movies</span> trending right now
+			</h1>
 			<div className={classes.TrendingMovies}>
 				{trendingMovies.map((m) => {
 					return (
@@ -23,8 +25,9 @@ export default function TrendingMovies() {
 								color: 'whitesmoke'
 							}}
 						>
-							<h2 className={classes.MovieCardText}>{m.title}</h2>
-							<div className={classes.Overlay} />
+							<div className={classes.Overlay}>
+								<h2 className={classes.MovieCardText}>{m.title}</h2>
+							</div>
 						</Link>
 					);
 				})}

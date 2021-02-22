@@ -21,10 +21,10 @@ function App() {
 				<Route path="/tv/:id">
 					<div>{searching ? <SearchedContent /> : <SingleContent />}</div>
 				</Route>
-				<Route path="/">
+				<Route exact path="/">
 					<div className={classes.LandingPage}>{searching ? <SearchedContent /> : <TrendingPage />}</div>
 				</Route>
-				<Route path="*">
+				<Route path="/*">
 					<Error />
 				</Route>
 			</Switch>

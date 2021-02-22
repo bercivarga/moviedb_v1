@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import classes from './Searchbar.module.css';
 import { useGlobalContext } from '../../context';
+import { FaSearch } from 'react-icons/fa';
 
 export default function Searchbar() {
 	const { searchTerm, setSearchTerm, setSearching, setOnDetailsPage } = useGlobalContext();
@@ -16,6 +17,10 @@ export default function Searchbar() {
 		setSearching(true);
 	};
 
+	const onIconClick = () => {
+		input.current.focus();
+	};
+
 	useEffect(
 		() => {
 			if (input.current.value === '') {
@@ -29,15 +34,17 @@ export default function Searchbar() {
 
 	return (
 		<form onSubmit={(e) => handleSubmit(e)}>
-			<input
-				type="text"
-				ref={input}
-				placeholder="Search"
-				value={searchTerm}
-				onChange={(e) => {
-					handleChange(e);
-				}}
-			/>
+			<div className={classes.Searchbar}>
+				<input
+					type="text"
+					ref={input}
+					value={searchTerm}
+					onChange={(e) => {
+						handleChange(e);
+					}}
+				/>
+				<FaSearch className={classes.Icon} onClick={onIconClick} />
+			</div>
 		</form>
 	);
 }

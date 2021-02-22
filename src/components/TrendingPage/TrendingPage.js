@@ -27,7 +27,7 @@ export default function TrendingPage() {
 						>
 							<div className={classes.Overlay} />
 							<div className={classes.HighlightText}>
-								<h4>Trending in cinemas now</h4>
+								<h4 style={{ marginBottom: '-20px' }}>Recommended for you</h4>
 								<h1 style={{ fontSize: '56px' }}>{trendingMovies[randomHighlight].title}</h1>
 								<p>{trendingMovies[randomHighlight].overview}</p>
 							</div>
@@ -37,6 +37,14 @@ export default function TrendingPage() {
 		},
 		[ trendingMovies ]
 	);
+
+	const memoizedTrendingMovies = useMemo(() => {
+		return <TrendingMovies />;
+	}, []);
+
+	const memoizedTrendingTv = useMemo(() => {
+		return <TrendingTv />;
+	}, []);
 
 	useEffect(
 		() => {
@@ -50,8 +58,8 @@ export default function TrendingPage() {
 		<React.Fragment>
 			{memoizedHighlight}
 			<div className={classes.TrendingContent}>
-				<TrendingMovies />
-				<TrendingTv />
+				{memoizedTrendingMovies}
+				{memoizedTrendingTv}
 			</div>
 		</React.Fragment>
 	);
