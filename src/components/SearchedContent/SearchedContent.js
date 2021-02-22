@@ -41,8 +41,9 @@ export default function SearchedMovies() {
 							color: 'whitesmoke'
 						}}
 					>
-						<h2 className={classes.MovieCardText}>{m.media_type === 'movie' ? m.title : m.name}</h2>
-						<div className={classes.Overlay} />
+						<div className={classes.Overlay}>
+							<h2 className={classes.MovieCardText}>{m.media_type === 'movie' ? m.title : m.name}</h2>
+						</div>
 					</Link>
 				);
 			})}

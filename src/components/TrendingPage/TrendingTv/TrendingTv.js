@@ -10,7 +10,7 @@ export default function TrendingTv() {
 	return (
 		<React.Fragment>
 			<h1 style={{ color: 'whitesmoke' }}>
-				<span style={{ color: 'red' }}>Series</span> trending right now
+				<span style={{ color: 'red' }}>Series</span> you don't want to miss
 			</h1>
 			<div className={classes.TrendingTv}>
 				{trendingTv.map((t) => {

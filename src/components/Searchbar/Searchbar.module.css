@@ -2,6 +2,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
+	width: 100%;
 }
 
 .Icon {
@@ -11,10 +12,13 @@
 	width: 20px;
 	color: whitesmoke;
 	cursor: pointer;
+	transition: all .1s linear;
 }
 
 .Searchbar input {
+	float: right;
 	background-color: transparent;
+	border-radius: 0;
 	width: 0px;
 	border: none;
 	border-bottom: 4px solid transparent;
@@ -23,11 +27,12 @@
 	outline: none;
 	font-size: 24px;
 	font-weight: bold;
-	transition: all .2s linear;
+	transition: all .1s linear;
 }
 
 .Searchbar input:focus {
+	float: right;
 	width: 100%;
 	border-bottom: 4px solid red;
-	transition: all .2s linear;
+	transition: all .1s linear;
 }

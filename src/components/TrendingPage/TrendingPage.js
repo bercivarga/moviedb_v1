@@ -14,7 +14,12 @@ export default function TrendingPage() {
 
 	const memoizedHighlight = useMemo(
 		() => {
-			if (trendingMovies.length > 0)
+			if (trendingMovies.length > 0) {
+				let shortenedOverview = trendingMovies[randomHighlight].overview;
+				if (shortenedOverview.length > 160) {
+					shortenedOverview = shortenedOverview.substring(0, 160) + '...';
+				}
+
 				return (
 					<Link to={`/movie/${trendingMovies[randomHighlight].id}`} style={{ textDecoration: 'none' }}>
 						<div
@@ -29,11 +34,12 @@ export default function TrendingPage() {
 							<div className={classes.HighlightText}>
 								<h4 style={{ marginBottom: '-20px' }}>Recommended for you</h4>
 								<h1 style={{ fontSize: '56px' }}>{trendingMovies[randomHighlight].title}</h1>
-								<p>{trendingMovies[randomHighlight].overview}</p>
+								<p>{shortenedOverview}</p>
 							</div>
 						</div>
 					</Link>
 				);
+			}
 		},
 		[ trendingMovies ]
 	);
@@ -60,6 +66,12 @@ export default function TrendingPage() {
 			<div className={classes.TrendingContent}>
 				{memoizedTrendingMovies}
 				{memoizedTrendingTv}
+				<div style={{ textAlign: 'center', color: 'whitesmoke' }}>
+					<p>
+						<strong>Made with&nbsp; ❤️ &nbsp;&nbsp; by Berci</strong>
+					</p>
+					<p>in Rotterdam</p>
+				</div>
 			</div>
 		</React.Fragment>
 	);
