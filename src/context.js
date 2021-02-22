@@ -5,7 +5,7 @@ const APIKEY = process.env.REACT_APP_API_KEY;
 const AppContext = React.createContext();
 
 export default function AppProvider({ children }) {
-	const [ loading, setLoading ] = useState(false);
+	const [ loading, setLoading ] = useState(true);
 	const [ searchTerm, setSearchTerm ] = useState('');
 	const [ trendingMovies, setTrendingMovies ] = useState([]);
 	const [ trendingTv, setTrendingTv ] = useState([]);
@@ -94,6 +94,7 @@ export default function AppProvider({ children }) {
 		<AppContext.Provider
 			value={{
 				loading,
+				setLoading,
 				searchTerm,
 				setSearchTerm,
 				trendingTv,

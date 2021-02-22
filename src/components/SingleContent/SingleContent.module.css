@@ -1,0 +1,47 @@
+.SingleContent {
+	color: whitesmoke;
+	position: relative;
+	height: 100vh;
+}
+
+.Backdrop {
+	position: absolute;
+	top: 0;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	z-index: -2;
+}
+
+.Overlay {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background: rgb(0, 0, 0, 0.75);
+	z-index: -1;
+}
+
+.ContentControl {
+	display: flex;
+	height: 100vh;
+	bottom: 0;
+	left: 0;
+}
+
+.Info {
+	display: flex;
+	align-self: flex-end;
+	width: 100%;
+}
+
+.Poster {
+	width: 300px;
+	border: 10px solid whitesmoke;
+	transform: translateY(-225px);
+}
+
+.Description {
+	background-color: black;
+	padding: 20px;
+	width: 100%;
+}

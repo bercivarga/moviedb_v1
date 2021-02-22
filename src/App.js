@@ -6,6 +6,7 @@ import { useGlobalContext } from './context';
 
 import { Switch, Route } from 'react-router-dom';
 import SingleContent from './components/SingleContent/SingleContent';
+import SingleTvContent from './components/SingleContent/SingleTvContent';
 import classes from './App.module.css';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
 					<div>{searching ? <SearchedContent /> : <SingleContent />}</div>
 				</Route>
 				<Route path="/tv/:id">
-					<div>{searching ? <SearchedContent /> : <SingleContent />}</div>
+					<div>{searching ? <SearchedContent /> : <SingleTvContent />}</div>
 				</Route>
 				<Route exact path="/">
 					<div className={classes.LandingPage}>{searching ? <SearchedContent /> : <TrendingPage />}</div>
