@@ -53,7 +53,7 @@ export default function SingleContent() {
 						/>
 						<div className={classes.Titles}>
 							<h1>{content.title}</h1>
-							<p>{'{content.tagline}'}</p>
+							<p>{content.tagline ? content.tagline : null}</p>
 						</div>
 					</div>
 					<div className={classes.Info}>
