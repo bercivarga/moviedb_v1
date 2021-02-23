@@ -14,7 +14,6 @@ export default function SingleContent() {
 	const { onDetailsPage, setOnDetailsPage, loading, setLoading } = useGlobalContext();
 
 	useEffect(() => {
-		//a wonky solution for the single page content, needs to be refined for a single request
 		try {
 			setLoading(true);
 			fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${APIKEY}`).then((res) => res.json()).then((data) => {

@@ -14,7 +14,6 @@ export default function SingleContent() {
 	const { onDetailsPage, setOnDetailsPage, loading, setLoading } = useGlobalContext();
 
 	useEffect(() => {
-		//a wonky solution for the single page content, needs to be refined for a single request
 		try {
 			setLoading(true);
 			fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${APIKEY}`)
@@ -36,29 +35,34 @@ export default function SingleContent() {
 
 	return (
 		<div className={classes.SingleContent}>
-			<div
-				className={classes.Backdrop}
-				style={{
-					backgroundImage: `url(https://image.tmdb.org/t/p/original/${content.backdrop_path})`
-				}}
-			/>
-			<div className={classes.Overlay} />
-			<div className={classes.ContentControl}>
-				<div className={classes.Info}>
-					<img
-						className={classes.Poster}
-						src={`https://image.tmdb.org/t/p/original/${content.poster_path}`}
-						alt={content.title}
-					/>
-					<div className={classes.Description}>
-						<h1>{content.title}</h1>
-						<p>"{content.tagline}"</p>
+			<div className={classes.Card}>
+				<div
+					className={classes.Backdrop}
+					style={{
+						backgroundImage: `url(https://image.tmdb.org/t/p/original/${content.backdrop_path})`
+					}}
+				>
+					<div className={classes.Overlay} />
+				</div>
+				<div className={classes.ContentControl}>
+					<div className={classes.TopContent}>
+						<img
+							className={classes.Poster}
+							src={`https://image.tmdb.org/t/p/original/${content.poster_path}`}
+							alt={content.title}
+						/>
+						<div className={classes.Titles}>
+							<h1>{content.title}</h1>
+							<p>"{content.tagline}"</p>
+						</div>
+					</div>
+					<div className={classes.Info}>
 						<p>{content.overview}</p>
 						<p>{content.release_date}</p>
 						<p>{content.vote_average}</p>
 						<p>{content.vote_count}</p>
-						<form className={classes.Redirect} action={content.homepage}>
-							<input type="submit" value="Stream this content" />
+						<form action={content.homepage}>
+							<input className={classes.Redirect} type="submit" value="Stream this content" />
 						</form>
 					</div>
 				</div>
