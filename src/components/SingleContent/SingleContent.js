@@ -11,7 +11,7 @@ export default function SingleContent() {
 	const [ content, setContent ] = useState({});
 
 	const { id } = useParams();
-	const { onDetailsPage, setOnDetailsPage, loading, setLoading } = useGlobalContext();
+	const { setOnDetailsPage, loading, setLoading } = useGlobalContext();
 
 	useEffect(() => {
 		try {
@@ -44,26 +44,22 @@ export default function SingleContent() {
 				>
 					<div className={classes.Overlay} />
 				</div>
-				<div className={classes.ContentControl}>
-					<div className={classes.TopContent}>
-						<img
-							className={classes.Poster}
-							src={`https://image.tmdb.org/t/p/original/${content.poster_path}`}
-							alt={content.title}
-						/>
-						<div className={classes.Titles}>
+				<div className={classes.TopContent}>
+					<img
+						className={classes.Poster}
+						src={`https://image.tmdb.org/t/p/original/${content.poster_path}`}
+						alt={content.title}
+					/>
+					<div className={classes.Titles}>
+						<div className={classes.TitleLine}>
 							<h1>{content.title}</h1>
-							<p>{content.tagline ? content.tagline : null}</p>
+							<form action={content.homepage}>
+								<input className={classes.Redirect} type="submit" value="Stream this content" />
+							</form>
 						</div>
-					</div>
-					<div className={classes.Info}>
-						<p>{content.overview}</p>
-						<p>{content.release_date}</p>
-						<p>{content.vote_average}</p>
-						<p>{content.vote_count}</p>
-						<form action={content.homepage}>
-							<input className={classes.Redirect} type="submit" value="Stream this content" />
-						</form>
+						<div className={classes.Overview}>
+							<p>{content.overview}</p>
+						</div>
 					</div>
 				</div>
 			</div>
