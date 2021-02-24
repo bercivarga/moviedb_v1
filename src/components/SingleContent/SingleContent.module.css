@@ -117,6 +117,14 @@
 }
 
 @media (max-width: 500px) {
+	.Card {
+		margin-top: 0;
+	}
+
+	.Backdrop {
+		padding-top: 56%;
+	}
+
 	.TopContent {
 		flex-direction: column;
 		transform: translateY(-40px);
