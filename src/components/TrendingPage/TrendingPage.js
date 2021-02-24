@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import TrendingMovies from './TrendingMovies/TrendingMovies';
 import TrendingTv from './TrendingTv/TrendingTv';
 import { Link } from 'react-router-dom';
@@ -8,18 +8,14 @@ import { useGlobalContext } from '../../context';
 import classes from './TrendingPage.module.css';
 
 export default function TrendingPage() {
-	const [ randomType, setRandomType ] = useState(null);
-	const [ randomHighlight, setRandomHighight ] = useState(null);
-
-	const { trendingMovies, trendingTv, onDetailsPage, setOnDetailsPage } = useGlobalContext();
-
-	const getRandomType = () => {
-		setRandomType(Math.floor(Math.random() * 2));
-	};
-
-	const getRandomHighlight = () => {
-		setRandomHighight(Math.floor(Math.random() * 20));
-	};
+	const {
+		trendingMovies,
+		trendingTv,
+		onDetailsPage,
+		setOnDetailsPage,
+		randomHighlight,
+		randomType
+	} = useGlobalContext();
 
 	const memoizedHighlight = useMemo(
 		() => {
@@ -62,7 +58,7 @@ export default function TrendingPage() {
 				}
 
 				return (
-					<Link to={`/movie/${trendingTv[randomHighlight].id}`} style={{ textDecoration: 'none' }}>
+					<Link to={`/tv/${trendingTv[randomHighlight].id}`} style={{ textDecoration: 'none' }}>
 						<div
 							className={classes.Highlight}
 							style={{
@@ -96,10 +92,8 @@ export default function TrendingPage() {
 		() => {
 			//navbar fix
 			setOnDetailsPage(false);
-			getRandomType();
-			getRandomHighlight();
 		},
-		[ onDetailsPage ]
+		[ onDetailsPage, trendingMovies, trendingTv ]
 	);
 
 	return (

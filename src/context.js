@@ -15,6 +15,10 @@ export default function AppProvider({ children }) {
 	// navbar fix
 	const [ onDetailsPage, setOnDetailsPage ] = useState(false);
 
+	// highlight fix
+	const [ randomType, setRandomType ] = useState(null);
+	const [ randomHighlight, setRandomHighight ] = useState(null);
+
 	useEffect(
 		() => {
 			const timer = setTimeout(() => {
@@ -29,9 +33,25 @@ export default function AppProvider({ children }) {
 		[ searchTerm ]
 	);
 
+	useEffect(
+		() => {
+			getRandomType();
+			getRandomHighlight();
+		},
+		[ onDetailsPage ]
+	);
+
 	useEffect(() => {
 		fetchTrendingMovies();
 		fetchTrendingTv();
+	}, []);
+
+	const getRandomType = useCallback(() => {
+		setRandomType(Math.floor(Math.random() * 2));
+	}, []);
+
+	const getRandomHighlight = useCallback(() => {
+		setRandomHighight(Math.floor(Math.random() * 20));
 	}, []);
 
 	const searchContent = useCallback(
@@ -104,7 +124,9 @@ export default function AppProvider({ children }) {
 				setSearching,
 				noResults,
 				onDetailsPage,
-				setOnDetailsPage
+				setOnDetailsPage,
+				randomHighlight,
+				randomType
 			}}
 		>
 			{children}
