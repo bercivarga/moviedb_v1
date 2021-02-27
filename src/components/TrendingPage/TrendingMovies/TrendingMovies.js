@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../../../context';
 import { Link } from 'react-router-dom';
+import Carousel, { slidesToScrollPlugin } from '@brainhubeu/react-carousel';
 
 import classes from './TrendingMovies.module.css';
 
