@@ -49,22 +49,8 @@
 }
 
 @media (max-width: 1250px) {
-	.TrendingTv {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
 	.TvCard {
-		background-position: center;
-	}
-}
-
-@media (max-width: 776px) {
-	.TrendingTv {
-		grid-template-columns: repeat(2, 1fr);
 		width: 300px;
-	}
-
-	.TvCard {
 		background-position: center;
 	}
 }

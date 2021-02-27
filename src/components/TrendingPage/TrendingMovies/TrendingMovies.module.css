@@ -54,9 +54,3 @@
 		width: 300px;
 	}
 }
-
-@media (max-width: 776px) {
-	.MovieCard {
-		background-position: center;
-	}
-}
