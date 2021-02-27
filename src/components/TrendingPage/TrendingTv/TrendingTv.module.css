@@ -1,13 +1,19 @@
 .TrendingTv {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	overflow: scroll;
+	grid-template-columns: repeat(20, 1fr);
 	grid-template-rows: repeat(auto-fit, 1fr);
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
 	margin-bottom: 100px;
 }
 
+.TrendingTv::-webkit-scrollbar {
+	display: none;
+}
+
 .TvCard {
+	width: 400px;
 	background-size: cover;
 	border-radius: 5px;
 	position: relative;
@@ -55,6 +61,7 @@
 @media (max-width: 776px) {
 	.TrendingTv {
 		grid-template-columns: repeat(2, 1fr);
+		width: 300px;
 	}
 
 	.TvCard {

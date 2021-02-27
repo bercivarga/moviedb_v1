@@ -1,13 +1,19 @@
 .TrendingMovies {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	overflow: scroll;
+	grid-template-columns: repeat(20, 1fr);
 	grid-template-rows: repeat(auto-fit, 1fr);
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
 	margin-bottom: 100px;
 }
 
+.TrendingMovies::-webkit-scrollbar {
+	display: none;
+}
+
 .MovieCard {
+	width: 400px;
 	background-size: cover;
 	border-radius: 5px;
 	position: relative;
@@ -43,20 +49,13 @@
 }
 
 @media (max-width: 1250px) {
-	.TrendingMovies {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
 	.MovieCard {
 		background-position: center;
+		width: 300px;
 	}
 }
 
 @media (max-width: 776px) {
-	.TrendingMovies {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
 	.MovieCard {
 		background-position: center;
 	}
