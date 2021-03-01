@@ -19,7 +19,7 @@ export default function SearchedMovies() {
 				let backDrop = '';
 				let backdropPath = '';
 				if (m.backdrop_path === null && m.poster_path === null) {
-					backdropPath = 'https://miro.medium.com/max/800/1*hFwwQAW45673VGKrMPE2qQ.png';
+					backdropPath = '';
 				} else if (m.backdrop_path) {
 					backDrop = m.backdrop_path;
 					backdropPath = `https://image.tmdb.org/t/p/original/${backDrop}`;
