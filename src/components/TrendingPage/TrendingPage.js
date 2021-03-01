@@ -1,6 +1,11 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import TrendingMovies from './TrendingMovies/TrendingMovies';
 import TrendingTv from './TrendingTv/TrendingTv';
+import ActionMovies from './ActionMovies/ActionMovies';
+import DramaMovies from './DramaMovies/DramaMovies';
+import ComedyMovies from './ComedyMovies/ComedyMovies';
+import FantasyMovies from './FantasyMovies/FantasyMovies';
+import ScifiMovies from './ScifiMovies/ScifiMovies';
 import { Link } from 'react-router-dom';
 
 import { useGlobalContext } from '../../context';
@@ -88,6 +93,26 @@ export default function TrendingPage() {
 		return <TrendingTv />;
 	}, []);
 
+	const memoizedAction = useMemo(() => {
+		return <ActionMovies />;
+	}, []);
+
+	const memoizedDrama = useMemo(() => {
+		return <DramaMovies />;
+	}, []);
+
+	const memoizedComedy = useMemo(() => {
+		return <ComedyMovies />;
+	}, []);
+
+	const memoizedFantasy = useMemo(() => {
+		return <FantasyMovies />;
+	}, []);
+
+	const memoizedScifi = useMemo(() => {
+		return <ScifiMovies />;
+	}, []);
+
 	useEffect(
 		() => {
 			//navbar fix
@@ -102,6 +127,11 @@ export default function TrendingPage() {
 			<div className={classes.TrendingContent}>
 				{memoizedTrendingMovies}
 				{memoizedTrendingTv}
+				{memoizedAction}
+				{memoizedDrama}
+				{memoizedComedy}
+				{memoizedFantasy}
+				{memoizedScifi}
 				<div style={{ textAlign: 'center', color: 'whitesmoke' }}>
 					<p>
 						<strong>Made with&nbsp; ❤️ &nbsp;&nbsp; by Berci</strong>

@@ -2,18 +2,18 @@ import React from 'react';
 import { useGlobalContext } from '../../../context';
 import { Link } from 'react-router-dom';
 
-import classes from './TrendingMovies.module.css';
+import classes from './FantasyMovies.module.css';
 
-export default function TrendingMovies() {
-	const { trendingMovies } = useGlobalContext();
+export default function ComedyMovies() {
+	const { fantasy } = useGlobalContext();
 
 	return (
 		<React.Fragment>
 			<h1 style={{ color: 'whitesmoke' }}>
-				<span style={{ color: 'red' }}>Movies</span> trending right now
+				<span style={{ color: 'red' }}>Fantasy</span> for your imagination
 			</h1>
-			<div className={classes.TrendingMovies}>
-				{trendingMovies.map((m) => {
+			<div className={classes.Content}>
+				{fantasy.map((m) => {
 					return (
 						<Link
 							to={`/movie/${m.id}`}

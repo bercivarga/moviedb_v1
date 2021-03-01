@@ -15,6 +15,13 @@ export default function AppProvider({ children }) {
 	// navbar fix
 	const [ onDetailsPage, setOnDetailsPage ] = useState(false);
 
+	// additional genres for trending page
+	const [ action, setAction ] = useState([]);
+	const [ drama, setDrama ] = useState([]);
+	const [ comedy, setComedy ] = useState([]);
+	const [ fantasy, setFantasy ] = useState([]);
+	const [ scifi, setScifi ] = useState([]);
+
 	// highlight fix
 	const [ randomType, setRandomType ] = useState(null);
 	const [ randomHighlight, setRandomHighight ] = useState(null);
@@ -44,6 +51,11 @@ export default function AppProvider({ children }) {
 	useEffect(() => {
 		fetchTrendingMovies();
 		fetchTrendingTv();
+		fetchAction();
+		fetchDrama();
+		fetchComedy();
+		fetchFantasy();
+		fetchScifi();
 	}, []);
 
 	const getRandomType = useCallback(() => {
@@ -69,9 +81,9 @@ export default function AppProvider({ children }) {
 							setNoResults(true);
 						}
 						setSearchedContent(data.results);
-						console.log(data);
 					});
 			} catch (error) {
+				setLoading(false);
 				console.error(error);
 			}
 		},
@@ -86,7 +98,6 @@ export default function AppProvider({ children }) {
 				.then((data) => {
 					setLoading(false);
 					setTrendingMovies(data.results);
-					console.log(data);
 				});
 		} catch (error) {
 			setLoading(false);
@@ -102,7 +113,81 @@ export default function AppProvider({ children }) {
 				.then((data) => {
 					setLoading(false);
 					setTrendingTv(data.results);
-					console.log(data);
+				});
+		} catch (error) {
+			setLoading(false);
+			console.error(error);
+		}
+	}, []);
+
+	const fetchAction = useCallback(() => {
+		setLoading(true);
+		try {
+			fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=28`)
+				.then((res) => res.json())
+				.then((data) => {
+					setLoading(false);
+					setAction(data.results);
+				});
+		} catch (error) {
+			setLoading(false);
+			console.error(error);
+		}
+	}, []);
+
+	const fetchDrama = useCallback(() => {
+		setLoading(true);
+		try {
+			fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=18`)
+				.then((res) => res.json())
+				.then((data) => {
+					setLoading(false);
+					setDrama(data.results);
+				});
+		} catch (error) {
+			setLoading(false);
+			console.error(error);
+		}
+	}, []);
+
+	const fetchComedy = useCallback(() => {
+		setLoading(true);
+		try {
+			fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=35`)
+				.then((res) => res.json())
+				.then((data) => {
+					setLoading(false);
+					setComedy(data.results);
+				});
+		} catch (error) {
+			setLoading(false);
+			console.error(error);
+		}
+	}, []);
+
+	const fetchFantasy = useCallback(() => {
+		setLoading(true);
+		try {
+			fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=14`)
+				.then((res) => res.json())
+				.then((data) => {
+					setLoading(false);
+					setFantasy(data.results);
+				});
+		} catch (error) {
+			setLoading(false);
+			console.error(error);
+		}
+	}, []);
+
+	const fetchScifi = useCallback(() => {
+		setLoading(true);
+		try {
+			fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=878`)
+				.then((res) => res.json())
+				.then((data) => {
+					setLoading(false);
+					setScifi(data.results);
 				});
 		} catch (error) {
 			setLoading(false);
@@ -126,7 +211,12 @@ export default function AppProvider({ children }) {
 				onDetailsPage,
 				setOnDetailsPage,
 				randomHighlight,
-				randomType
+				randomType,
+				action,
+				drama,
+				comedy,
+				fantasy,
+				scifi
 			}}
 		>
 			{children}

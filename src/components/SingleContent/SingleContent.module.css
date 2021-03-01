@@ -90,6 +90,10 @@
 	transition: all .2s linear;
 }
 
+.Overview {
+	width: 80%;
+}
+
 @media (max-width: 1919px) {
 	.Card {
 		width: 60%;
