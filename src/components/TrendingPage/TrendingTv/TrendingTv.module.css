@@ -1,10 +1,4 @@
 .TrendingTv {
-	display: grid;
-	overflow: scroll;
-	grid-template-columns: repeat(20, 1fr);
-	grid-template-rows: repeat(auto-fit, 1fr);
-	grid-column-gap: 10px;
-	grid-row-gap: 10px;
 	margin-bottom: 100px;
 }
 

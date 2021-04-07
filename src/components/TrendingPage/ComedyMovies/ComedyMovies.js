@@ -4,6 +4,32 @@ import { Link } from 'react-router-dom';
 
 import classes from './ComedyMovies.module.css';
 
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+const responsive = {
+	superLargeDesktop: {
+		breakpoint: { max: 4000, min: 1920 },
+		items: 4,
+		partialVisibilityGutter: 20
+	},
+	desktop: {
+		breakpoint: { max: 1919, min: 1024 },
+		items: 3,
+		partialVisibilityGutter: 20
+	},
+	tablet: {
+		breakpoint: { max: 1024, min: 464 },
+		items: 1,
+		partialVisibilityGutter: 270
+	},
+	mobile: {
+		breakpoint: { max: 464, min: 0 },
+		items: 1,
+		partialVisibilityGutter: 30
+	}
+};
+
 export default function ComedyMovies() {
 	const { comedy } = useGlobalContext();
 
@@ -12,7 +38,13 @@ export default function ComedyMovies() {
 			<h1 style={{ color: 'whitesmoke' }}>
 				<span style={{ color: 'red' }}>Comedy</span> to make you laugh
 			</h1>
-			<div className={classes.Content}>
+			<Carousel
+				partialVisible={true}
+				responsive={responsive}
+				swipeable={true}
+				draggable={true}
+				className={classes.Content}
+			>
 				{comedy.map((m) => {
 					return (
 						<Link
@@ -31,7 +63,7 @@ export default function ComedyMovies() {
 						</Link>
 					);
 				})}
-			</div>
+			</Carousel>
 		</React.Fragment>
 	);
 }
